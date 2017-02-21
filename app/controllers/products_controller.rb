@@ -5,14 +5,11 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-            temp_file = Tempfile.new("file.csv")
+  end
 
-    zip_data = File.read(temp_file.path)
-              # Sending the data to the browser as an attachment
-              send_data(zip_data, type: 'application/zip', filename: "file.csv")
-
-
-
+  def download
+    zip_data = File.read("#{Rails.root}/public/uploads/reports/#{params[:id]}.csv")
+    send_data(zip_data, type: 'application/zip', filename: "#{params[:id]}.csv")
   end
 
   # GET /products/1
@@ -45,13 +42,10 @@ class ProductsController < ApplicationController
       @discription << ad.at('p').text
       @url << ad.at('a')['href'].to_s
       end
-#           filename = "vishal.csv"
-# dir = File.dirname("#{Rails.root}/public/uploads/reports/#{filename}")
-#           FileUtils.mkdir_p(dir) unless File.directory?(dir)
-          # save_path = Rails.root.join(dir, filename)
 
 
-      CSV.open("#{Rails.root}/public/uploads/reports/file.csv", "wb") do |csv| 
+
+      CSV.open("#{Rails.root}/public/uploads/reports/file.csv_#{rand(123123)}", "wb") do |csv| 
       csv << ["Title", "Discription", "Url"] 
       (0..@title.length).each do |index| 
       csv << [@title[index], @discription[index], @url[index]] 
