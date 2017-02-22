@@ -1,0 +1,82 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/lib/heroku/lib/node',
+1 verbose cli   '/usr/lib/heroku/lib/npm/cli.js',
+1 verbose cli   'install',
+1 verbose cli   'https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz' ]
+2 info using npm@3.10.10
+3 info using node@v6.9.5
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz
+8 silly fetchOtherPackageData https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz
+9 silly cache add args [ 'https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz',
+9 silly cache add   null ]
+10 verbose cache add spec https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz',
+11 silly cache add   scope: null,
+11 silly cache add   escapedName: null,
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz',
+11 silly cache add   spec: 'https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz',
+11 silly cache add   type: 'remote' }
+12 silly mapToRegistry name https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry data Result {
+15 silly mapToRegistry   raw: 'https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz',
+15 silly mapToRegistry   scope: null,
+15 silly mapToRegistry   escapedName: null,
+15 silly mapToRegistry   name: null,
+15 silly mapToRegistry   rawSpec: 'https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz',
+15 silly mapToRegistry   spec: 'https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz',
+15 silly mapToRegistry   type: 'remote' }
+16 silly mapToRegistry uri https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz
+17 verbose addRemoteTarball https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz not in flight; adding
+18 verbose addRemoteTarball [ 'https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz',
+18 verbose addRemoteTarball   null ]
+19 info retry fetch attempt 1 at 10:03:46 AM
+20 info attempt registry request try #1 at 10:03:46 AM
+21 http fetch GET https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz
+22 verbose request id 93eac490889d35ea
+23 http fetch 200 https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz
+24 silly fetchAndShaCheck shasum 975d9cc8d673308d20c98a34fc7ba0c87a923853
+25 verbose addTmpTarball /tmp/npm-5535-37e3f136/github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz not in flight; adding
+26 verbose correctMkdir /home/vishal/.npm correctMkdir not in flight; initializing
+27 verbose makeDirectory /home/vishal/.npm creation not in flight; initializing
+28 silly makeDirectory /home/vishal/.npm uid: 1001 gid: 1001
+29 verbose addTmpTarball validating metadata from /tmp/npm-5535-37e3f136/github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz
+30 verbose tar unpack /tmp/npm-5535-37e3f136/github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz
+31 verbose tar unpacking to /tmp/npm-5535-37e3f136/unpack-a798d88e
+32 silly gentlyRm /tmp/npm-5535-37e3f136/unpack-a798d88e is being purged
+33 verbose gentlyRm don't care about contents; nuking /tmp/npm-5535-37e3f136/unpack-a798d88e
+34 silly gunzTarPerm modes [ '775', '664' ]
+35 silly gunzTarPerm extractEntry
+36 silly fetchPackageMetaData Error: ENOTDIR: not a directory, open '/tmp/npm-5535-37e3f136/unpack-a798d88e/package.json'
+36 silly fetchPackageMetaData     at Error (native)
+36 silly fetchPackageMetaData  error for https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz { Error: ENOTDIR: not a directory, open '/tmp/npm-5535-37e3f136/unpack-a798d88e/package.json'
+36 silly fetchPackageMetaData     at Error (native)
+36 silly fetchPackageMetaData   errno: -20,
+36 silly fetchPackageMetaData   code: 'ENOTDIR',
+36 silly fetchPackageMetaData   syscall: 'open',
+36 silly fetchPackageMetaData   path: '/tmp/npm-5535-37e3f136/unpack-a798d88e/package.json' }
+37 silly rollbackFailedOptional Starting
+38 silly rollbackFailedOptional Finishing
+39 silly runTopLevelLifecycles Finishing
+40 silly install printInstalled
+41 verbose stack Error: ENOTDIR: not a directory, open '/tmp/npm-5535-37e3f136/unpack-a798d88e/package.json'
+41 verbose stack     at Error (native)
+42 verbose cwd /home/vishal/Documents/scraping/bing
+43 error Linux 4.4.0-62-generic
+44 error argv "/usr/lib/heroku/lib/node" "/usr/lib/heroku/lib/npm/cli.js" "install" "https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz"
+45 error node v6.9.5
+46 error npm  v3.10.10
+47 error path /tmp/npm-5535-37e3f136/unpack-a798d88e/package.json
+48 error code ENOTDIR
+49 error errno -20
+50 error syscall open
+51 error ENOTDIR: not a directory, open '/tmp/npm-5535-37e3f136/unpack-a798d88e/package.json'
+52 error If you need help, you may report this error at:
+52 error     <https://github.com/npm/npm/issues>
+53 verbose exit [ -20, true ]

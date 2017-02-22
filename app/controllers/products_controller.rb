@@ -26,12 +26,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-      browser = Watir::Browser.new :firefox 
+      # browser = Watir::Browser.new :firefox 
       @search = params[:search]
-      b = browser.goto "https://www.bing.com/search?q=#{@search}"
+      # b = browser.goto "https://www.bing.com/search?q=#{@search}"
+      response = HTTParty.get("https://www.bing.com/search?q=#{@search}")
 
 
-      doc = Nokogiri::HTML(open("https://www.bing.com/search?q=#{@search}"))
+      doc = Nokogiri::HTML(response.body)
       alldata = doc.css('li.b_algo')
       @title = []
       @url = []
