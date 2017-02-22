@@ -31,9 +31,9 @@ class ProductsController < ApplicationController
       # b = browser.goto "https://www.bing.com/search?q=#{@search}"
       response = HTTParty.get("https://www.bing.com/search?q=#{@search}")
       
-      response1 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first")
-      response2 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first&first")
-      response3 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first&first&first")
+      response1 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first=11")
+      response2 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first=21")
+      response3 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first=31")
 
 
       response << response1
