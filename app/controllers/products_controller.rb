@@ -30,6 +30,15 @@ class ProductsController < ApplicationController
       @search = params[:search]
       # b = browser.goto "https://www.bing.com/search?q=#{@search}"
       response = HTTParty.get("https://www.bing.com/search?q=#{@search}")
+      
+      response1 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first")
+      response2 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first&first")
+      response3 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first&first&first")
+
+
+      response << response1
+      response << response2
+      response << response3
 
 
       doc = Nokogiri::HTML(response.body)
@@ -45,7 +54,7 @@ class ProductsController < ApplicationController
       end
 
 
-      @product = Product.create(title: @title, description: @discription, url: @url)
+      @product = Product.create(title: @title, description: @discription, url: @url, search: @search)
 
       CSV.open("#{Rails.root}/public/uploads/reports/#{@product.id}.csv", "wb") do |csv| 
       csv << ["Title", "Discription", "Url"] 

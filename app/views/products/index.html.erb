@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Products</h1>
+<h1>Listing Search Result</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Bing search</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>URL</th>
+      <th>Search</th>
+      
       <th>Download</th>
 
       <th colspan="3"></th>
@@ -16,15 +14,13 @@
   </thead>
 
   <tbody>
+  <% if @products.present? %>
     <% @products.each do |product| %>
-    
       <tr>
-        <td><%= product.Bing_search %></td>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.url %></td>
-<td><%= link_to "Download as CSV", download_path(product, :format => "csv") %></td>
+        <td><%= product.search %></td>
+        <td><%= link_to "Download as CSV", download_path(product, :format => "csv") %></td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
