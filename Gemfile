@@ -52,3 +52,4 @@ gem  'selenium-webdriver'
 
 gem 'roo' 
 gem 'pry' 
+gem 'rails_12factor'
