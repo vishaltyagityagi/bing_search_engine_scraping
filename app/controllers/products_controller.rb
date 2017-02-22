@@ -45,15 +45,15 @@ class ProductsController < ApplicationController
       end
 
 
+      @product = Product.create(title: @title, description: @discription, url: @url)
 
-      CSV.open("#{Rails.root}/public/uploads/reports/file.csv_#{rand(123123)}", "wb") do |csv| 
+      CSV.open("#{Rails.root}/public/uploads/reports/#{@product.id}.csv", "wb") do |csv| 
       csv << ["Title", "Discription", "Url"] 
       (0..@title.length).each do |index| 
       csv << [@title[index], @discription[index], @url[index]] 
       end 
       end 
 
-      @product = Product.create(title: @title, description: @discription, url: @url)
 
     # format.csv do
     #   response.headers['Content-Type'] = 'text/csv'
