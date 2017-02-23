@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
 
       alldata.each do |ad|
       @title << ad.at('a').text
-      @discription << ad.at('p').text
+      @discription << ad.at('p').text if  ad.at('p').text.present?
       @url << ad.at('a')['href'].to_s
       end
 
