@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  # before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
@@ -19,6 +19,14 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
   end
+
+  def destroy
+  Product.find(params[:id]).destroy
+   redirect_to products_path
+
+
+  end
+
 
   # GET /products/1/edit
 

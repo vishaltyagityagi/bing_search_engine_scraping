@@ -19,6 +19,9 @@
       <tr>
         <td><%= product.search %></td>
         <td><%= link_to "Download as CSV", download_path(product, :format => "csv") %></td>
+        <td><%= link_to "Delete", product_path(product), method: "delete" %></td>
+        
+
       </tr>
     <% end %>
     <% end %>
