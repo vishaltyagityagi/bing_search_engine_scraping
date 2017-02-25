@@ -1,9 +1,44 @@
-<p id="notice"><%= notice %></p>
+<%if @product.present?%>
+<table style="border: 1px solid black;">
+  <thead>
+    <tr>
+      <!-- <th>Search</th> -->
+      
+      <th>No fo records</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Url</th>
 
-<p>
-  <strong>Bing search:</strong>
-  <%= @product.Bing_search %>
-</p>
+
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+
+<% if @product.present? %>
+        <% @title = JSON.parse(@product.title) %>
+        <% @description = JSON.parse(@product.description) %>
+        <% @url = JSON.parse(@product.url) %>
+        <% (0..@title.count).each.with_index(1) do |i, index|%>
+        <tr>
+        <td><%= index%></td>
+        <td><%= @title[i]%></td>
+        <td><%= @description[i]%></td>
+        <td><%= @url[i] %></td>
+        </tr>
+       <% end %>
+        
+  <% end %>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+<% end %>
+
+<style type="text/css">
+	table, th, td {
+   border: 1px solid black;
+}
+</style>

@@ -27,6 +27,10 @@ class ProductsController < ApplicationController
 
   end
 
+  def show
+    @product = Product.find(params[:id]) rescue ""  
+  end
+
 
   # GET /products/1/edit
 
@@ -36,40 +40,33 @@ class ProductsController < ApplicationController
   def create
       # browser = Watir::Browser.new :firefox 
       @search = params[:search]
-      # b = browser.goto "https://www.bing.com/search?q=#{@search}"
-      response = HTTParty.get("https://www.bing.com/search?q=#{@search}")
-      
-      response1 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first=11")
-      response2 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first=21")
-      response3 = HTTParty.get("https://www.bing.com/search?q=#{@search}&first=31")
+      client = Mechanize.new
 
+          @title = []
+          @url = []
+          @discription = []
+      (1..531).step(10) do |p|
+        client.get("https://www.bing.com/search?q=#{@search}&first=#{p}") do |page|
 
-      response << response1
-      response << response2
-      response << response3
+          document = Nokogiri::HTML::Document.parse(page.body)
+          alldata = document.css('li.b_algo') rescue ""
 
-
-      doc = Nokogiri::HTML(response.body)
-      alldata = doc.css('li.b_algo')
-      @title = []
-      @url = []
-      @discription = []
-
-      alldata.each do |ad|
-      @title << ad.at('a').text
-      @discription << ad.at('p').text if  ad.at('p').text.present?
-      @url << ad.at('a')['href'].to_s
+          alldata.each do |ad|
+            @title << ad.at('a').text  rescue ""
+            @discription << ad.at('p').text rescue ""
+            @url << ad.at('a')['href'].to_s  rescue ""
+          end
+        end
       end
-
 
       @product = Product.create(title: @title, description: @discription, url: @url, search: @search)
 
-      CSV.open("#{Rails.root}/public/uploads/reports/#{@product.id}.csv", "wb") do |csv| 
-      csv << ["Title", "Discription", "Url"] 
-      (0..@title.length).each do |index| 
-      csv << [@title[index], @discription[index], @url[index]] 
-      end 
-      end 
+      # CSV.open("#{Rails.root}/public/uploads/reports/#{@product.id}.csv", "wb") do |csv| 
+      # csv << ["Title", "Discription", "Url"] 
+      # (0..@title.length).each do |index| 
+      # csv << [@title[index], @discription[index], @url[index]] 
+      # end 
+      # end 
 
 
     # format.csv do
