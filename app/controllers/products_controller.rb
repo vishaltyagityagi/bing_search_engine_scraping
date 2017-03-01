@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.order('id DESC').first 10
   end
 
   def download
@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
   # POST /products.json
 def create
   if params[:search] && params[:keyword].present?
-    @search_keyword = params[:search].split(',')- [""]
+    @search_keyword = params[:search].split(',') - [""]
     # if @search_keyword.size > 1
     @search_keyword.each do |ks|
 
@@ -47,13 +47,14 @@ def create
       searching(@serach_k)
       @product = Product.create(title: @title, description: @discription, url: @url, search: @serach_k)
     end
+
   # end
   else
     @search = params[:search]
     searching(@search)
     @product = Product.create(title: @title, description: @discription, url: @url, search: @search)
   end
-  redirect_to products_path
+  redirect_to root_path
   end
 end
 
