@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
 
-    @products = Product.order('id DESC').first 2
+    @products = Product.order('id DESC').first 10
 end
  def all
     @products = Product.order('id DESC')
