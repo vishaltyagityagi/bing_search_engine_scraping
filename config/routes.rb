@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # Example of regular route:
     post 'bing_serch' => 'products#create', as: :bing
     get 'download/:id' => 'products#download', as: :download
+    get 'products_all' => 'products#all', as: :all
+
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

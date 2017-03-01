@@ -4,8 +4,13 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.order('id DESC').first 10
-  end
+
+    @products = Product.order('id DESC').first 2
+end
+ def all
+    @products = Product.order('id DESC')
+
+ end
 
   def download
     zip_data = File.read("#{Rails.root}/public/uploads/reports/#{params[:id]}.csv")
@@ -40,6 +45,7 @@ class ProductsController < ApplicationController
 def create
   if params[:search] && params[:keyword].present?
     @search_keyword = params[:search].split(',') - [""]
+
     # if @search_keyword.size > 1
     @search_keyword.each do |ks|
 
@@ -54,7 +60,7 @@ def create
     searching(@search)
     @product = Product.create(title: @title, description: @discription, url: @url, search: @search)
   end
-  redirect_to root_path
+  redirect_to products_path
   end
 end
 
