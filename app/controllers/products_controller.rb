@@ -52,7 +52,7 @@ def create
       @serach_k = ks
       searching(@serach_k)
       @product = Product.create(title: @title, description: @discription, url: @url, search: @serach_k)
-      sleep 1.5
+        sleep 1.5
     end
 
   # end
