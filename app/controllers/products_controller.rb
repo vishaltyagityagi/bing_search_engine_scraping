@@ -52,7 +52,6 @@ def create
       @serach_k = ks
       searching(@serach_k)
       @product = Product.create(title: @title, description: @discription, url: @url, search: @serach_k)
-        sleep 1.5
     end
 
   # end
@@ -61,6 +60,7 @@ def create
     searching(@search)
     @product = Product.create(title: @title, description: @discription, url: @url, search: @search)
   end
+        sleep 1.5
   redirect_to products_path
   end
 end
