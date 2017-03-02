@@ -60,7 +60,7 @@ def create
     searching(@search)
     @product = Product.create(title: @title, description: @discription, url: @url, search: @search)
   end
-        sleep 1.5
+        sleep 5
   redirect_to products_path
   end
 end
