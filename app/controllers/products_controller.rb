@@ -60,8 +60,13 @@ def create
     searching(@search)
     @product = Product.create(title: @title, description: @discription, url: @url, search: @search)
   end
-        sleep 5
+        sleep(30)
+        if request.path ==  "/bing_serch"
   redirect_to products_path
+else
+  redirect_to products_path
+end
+
   end
 end
 
